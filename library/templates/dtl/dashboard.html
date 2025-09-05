@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Library Dashboard</title>
+</head>
+<body>
+    
+    <h1>Ibadan Central Library</h1>
+    <p>Librarian: {{ librarian }}</p>
+    <p>Today's Date: {{ current_date }}</p>
+    <h3>{{ featured_message }}</h3>
+
+    <!-- 2. Conditional Greeting -->
+
+    {% if is_weekend %}
+    <p>Welcome to a new weekday at the library!</p>
+    {% else %}
+    <p> Welcome to a new week </p>
+    {% endif %}
+
+    <!-- 3. Books List -->
+    <h2>Books Collection</h2>
+    <ul>
+        <!-- TODO: Loop through books -->
+         {% for book in books %}
+        <li>
+            {{ book.title }} by {{ book.author }} {{ book.publication_year }}
+                        
+        </li>
+        {% if book.is_featured %}
+        <h3>FEATURED</h3>
+        {% else %}
+        <h3>NO FEATURED</h3>
+        {% endif %}
+        <p>--------------------------------------------------</p>
+        <p> ISBN {{ book.isbn }} </p>
+        <p> Category {{ book.category }}</p>
+        <p>Price #{{ book.price }}</p>
+        <p>Available {{ book.available_copies }} </p>
+        
+        {% endfor %}
+    </ul>
+
+    <!-- 4. Library Statistics -->
+    <h2>Library Statistics</h2>
+    <ul>
+       
+        <p>Total Members: {{ library_stats.total_members }}</p>
+        <p>Books Borrowed Today: {{ library_stats.books_borrowed_today }}</p>
+        <p>Overdue Books: {{ library_stats.overdue_books }}</p>
+        <p> New Arrivals This Month: {{ library_stats.new_arrivals_this_month }}</p>
+       
+       
+    </ul>
+</body>
+</html>

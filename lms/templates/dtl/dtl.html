@@ -24,8 +24,11 @@
 
     <h3>Weight: {{ weight }}</h3>
 
+    <div><h1>
+        Notifications
+    </h1></div>
     {% if is_logged_in %}
-        <div>Notifications</div>
+        
         <ul>
             {% for notification in notifications %}
                 <li>{{ notification }}</li>

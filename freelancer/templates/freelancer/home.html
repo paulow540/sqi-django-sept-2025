@@ -1,0 +1,20 @@
+{%  extends  "partials/base.html" %}
+
+{% block title %}
+Home 
+{% endblock title %}
+
+
+{% block body %}
+
+<h1>Testimonials</h1>
+<p>{{ testimonials.Dan }}</p>
+<p> {{ testimonials.Paul }} </p>
+
+{% for service_key, service_value in services.items %}
+<p> {{service_key }} ---> {{ service_value }} </p>
+
+{% endfor %}
+
+
+{% endblock body %}

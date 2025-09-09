@@ -1,11 +1,15 @@
+{% load  static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DTL</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
+    <img src="{% static 'images/cat.jpg' %}" alt="cat">
     <h1>Django Template Language Demo</h1>
     <h2>Hello, {{ my_name|lower }} 👋</h2>
     <h3>Today is {{ today|date:"Y-m-d" }}</h3>
@@ -49,6 +53,8 @@
             <p>{{ address_key }}: {{ address_value }}</p>
         {% endfor %}
     </div>
+
+    
 
 </body>
 </html>

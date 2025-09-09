@@ -1,0 +1,201 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: #faf8f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 2rem;
+}
+
+h1, h2 {
+    color: #3e2f2f;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* Navbar */
+.header {
+    background: #5c3d2e;
+    padding: 1rem 0;
+}
+
+.navbar {
+    display: flex;
+    justify-content: center;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffd27f;
+}
+
+/* Lists & Sections */
+ul, li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+}
+
+/* Menu Page */
+.menu-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.menu-items img {
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.menu-items img:hover {
+    transform: scale(1.05);
+}
+
+/* Team Section */
+.team-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.team-section h1 {
+    font-size: 1.5rem;
+    color: #5c3d2e;
+}
+
+/* Contact Page */
+.contact-info {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+/* Footer */
+.footer {
+    background: #5c3d2e;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 3rem;
+    font-size: 0.9rem;
+}
+
+
+/* Hero Section */
+.hero {
+    background: linear-gradient(rgba(92, 61, 46, 0.6), rgba(92, 61, 46, 0.6)),
+                url('../images/bakery-bg.jpg') center/cover no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 6rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 3rem;
+    animation: fadeIn 1s ease-in;
+}
+
+.hero-text h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.hero-text p {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+}
+
+.btn {
+    display: inline-block;
+    background: #ffd27f;
+    color: #3e2f2f;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #ffbf4d;
+}
+
+/* Specials Section */
+.specials {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.specials h2 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: #5c3d2e;
+}
+
+.specials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+}
+
+.special-card {
+    background: #fff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.special-card:hover {
+    transform: translateY(-8px);
+}
+
+.special-card h3 {
+    margin-bottom: 0.5rem;
+    color: #3e2f2f;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5c3d2e;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

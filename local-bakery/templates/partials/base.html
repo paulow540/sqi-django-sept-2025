@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | Bakery</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include "partials/header.html" %}
+
+    <main class="container">
+        {% block content %}{% endblock content %}
+    </main>
+
+    <footer class="footer">
+        <p>&copy; {{ now.year }} Local Bakery. Crafted with ❤️</p>
+    </footer>
+</body>
+</html>

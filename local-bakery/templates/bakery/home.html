@@ -1,0 +1,27 @@
+{% extends "partials/base.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-text">
+        <h1>{{ title }}</h1>
+        <p>{{ tagline }}</p>
+        <a href="{% url 'bakery:menu' %}" class="btn">See Our Menu</a>
+    </div>
+</section>
+
+<section class="specials">
+    <h2>Today’s Specials</h2>
+    <div class="specials-grid">
+        {% for special in specials %}
+        <div class="special-card">
+            <h3>{{ special.name }}</h3>
+            <p class="price">{{ special.price }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock content %}

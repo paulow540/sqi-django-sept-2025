@@ -1,0 +1,27 @@
+{% extends "partials/base.html" %}
+
+{% load static  %}
+{% block title %}
+
+{% endblock title %}
+
+
+{% block content %}
+<h1>{{ title }}</h1>
+<div class="contact-info">
+    <p><strong>Address:</strong> {{ address }}</p>
+    <p><strong>Phone:</strong> {{ phone }}</p>
+    <p><strong>Email:</strong> {{ email }}</p>
+</div>
+
+<h2>Opening Hours</h2>
+<ul>
+    {% for key, value in opening_hours.items %}
+    <li><strong>{{ key }}:</strong> {{ value }}</li>
+    {% endfor %}
+</ul>
+
+
+
+
+{% endblock content %}

@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     {% load static %}
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/pop.css' %}">
+
     
 </head>
 <body>
@@ -14,12 +16,19 @@
 
     <main class="container">
         {% block content %}{% endblock content %}
+
+        
     </main>
+
+
+
+
 
     <footer class="footer">
         <p>&copy; {{ now.year }} Local Bakery. Crafted with ❤️</p>
     </footer>
 
-    <script src="{% static 'js/home.js' %}"></script>
+    
 </body>
+<script src="{% static 'js/home.js' %}"></script>
 </html>

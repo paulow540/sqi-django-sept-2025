@@ -1,0 +1,44 @@
+{% extends "base/base.html" %}
+
+{% load static %}
+
+{% block hero %}
+<div class="hero">
+  <h1>Welcome to the Music Store 🎵</h1>
+</div>
+{% endblock hero %}
+
+{% block content %}
+<p style="text-align:center; font-size:1.2rem; margin-bottom:30px;">
+  Discover your favorite <strong>artists</strong> and explore our collection of <strong>albums</strong>.
+</p>
+
+<div class="card-grid">
+  <div class="card">
+    <img src="https://picsum.photos/400/200?random=2" alt="Album">
+    <div class="card-content">
+      <h3>Featured Album</h3>
+      <p>Hot tracks from top artists.</p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://picsum.photos/400/200?random=3" alt="Artist">
+    <div class="card-content">
+      <h3>Rising Artist</h3>
+      <p>Discover fresh sounds.</p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://picsum.photos/400/200?random=4" alt="Concert">
+    <div class="card-content">
+      <h3>Live Events</h3>
+      <p>Catch live performances near you.</p>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+{%  include  "js/base.js" %}
+
+

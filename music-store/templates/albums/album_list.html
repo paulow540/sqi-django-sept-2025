@@ -1,0 +1,32 @@
+{% extends "base/base.html" %}
+
+{% block hero %}
+<div class="hero" style="background:url('https://picsum.photos/1600/600?random=8') center/cover;">
+  <h1>Albums</h1>
+</div>
+{% endblock hero %}
+
+{% block content %}
+<p style="text-align:center;">Browse our wide selection of albums.</p>
+
+ 
+
+
+<div class="card-grid">
+  
+{% for all_album_list in all_album_lists %}  
+
+<div class="card">
+    <img src="https://picsum.photos/400/200?random={{ forloop.counter }}" alt="Album">
+    <div class="card-content">
+      <h3>{{ all_album_list.title}}</h3>
+      <p><strong>Artist:</strong> {{ all_album_list.artist.name }}</p>
+      <p>Release Year: {{all_album_list.release_date}} </p>
+    </div>
+</div>
+ {% endfor %}
+
+
+ 
+</div>
+{% endblock content %}

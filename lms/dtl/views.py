@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_list_or_404
 from django.utils import timezone
+from authors.models import Author
+from library.models import Book
 # Create your views here.
 
 
@@ -46,3 +48,23 @@ def shopping_cart(request):
         "today": timezone.now(),
     }
     return render(request, "dtl/cart.html", context)
+
+
+
+def model_demo(request):
+    #  Fetch all the authors
+    all_authors = Author.objects.all()
+    all_books = Book.objects.all()
+    chosen_author =  all_authors.get(id=1)
+    books_chosen_author = chosen_author.books.all()
+    all_author_born_before_2000 = all_authors.filter(birth_date__gt="2000-01-01")
+    context = {
+        "all_authors": all_authors,
+        "all_books": all_books,
+        "chosen_author" : chosen_author,    
+        "books_chosen_author":books_chosen_author,
+        "all_author_born_before_2000": all_author_born_before_2000
+
+    }
+
+    return render(request, "dtl/model-demo.html", context)

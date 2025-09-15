@@ -1,0 +1,50 @@
+{% load  static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DTL</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div>
+  <h1> ALL AUTHORS </h1>
+    {% for all_author in all_authors  %}
+        <p> {{ all_author}} </p>
+    {% endfor %}
+  </div>
+
+  <div>  
+  <h1> ALL BOOKS</h1>
+  {% for all_book in all_books %}
+  <p> {{all_book}} </p>
+
+  {% endfor %}   
+  
+  </div>
+
+  <div>
+  <h1> Name of Author with more than one book </h1>
+  <p> {{chosen_author}} </p>
+  
+  </div>
+
+<div>
+<h1> Choosen Author Books</h1>
+{% for  book_chosen_author in  books_chosen_author %}
+<p> {{ book_chosen_author }} </p>
+{% endfor %}
+
+</div> 
+
+  <h1> All Author born before 2000</h1>
+    {% for author in all_author_born_before_2000 %}
+     <p> {{author}} born {{ author.birth_date}} </p>    
+    {% endfor %}
+
+
+
+</body>
+</html>

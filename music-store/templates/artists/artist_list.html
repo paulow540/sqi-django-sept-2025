@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+{% block hero %}
+<div class="hero" style="background:url('https://picsum.photos/1600/600?random=5') center/cover;">
+  <h1>Artists</h1>
+</div>
+{% endblock hero %}
+
+{% block content %}
+<p style="text-align:center;">Browse our talented collection of artists.</p>
+
+<div class="card-grid">
+
+
+{% for all_artist_list in all_artist_lists %}
+<div class="card">
+ <img src="https://picsum.photos/400/200?random={{ forloop.counter }}" alt="Artist">
+    <div class="card-content">
+      <h3>{{all_artist_list.name}}</h3>
+      <p> {{all_artist_list.debut_year}} </p>
+    </div>
+</div>
+{% endfor %}
+</div>
+   
+
+
+
+{% endblock content %}

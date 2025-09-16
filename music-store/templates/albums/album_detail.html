@@ -1,0 +1,23 @@
+{% extends "base/base.html" %}
+
+
+
+{% block content %}
+<p style="text-align:center;">{{all_album_details.title }}  by {{all_album_details.artist.name}}  release {{all_album_details.release_date}} </p>
+
+<div class="card-grid">  
+
+<div class="card">
+    <img src="{{ all_album_details.album_image.url }}" alt="Album">
+    <div class="card-content">
+      <h3>{{ all_album_details.title}}</h3>
+      <p><strong>Artist:</strong> {{ all_album_details.artist.name }}</p>
+      <p>Release Year: {{all_album_details.release_date}} </p>
+    </div>
+</div>
+
+
+
+ 
+</div>
+{% endblock content %}

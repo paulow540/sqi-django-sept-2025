@@ -1,0 +1,29 @@
+{% extends "base/base.html" %}
+
+
+
+
+{% block content %}
+<p style="text-align:center;">Artist Name: {{all_artist_details.name }}  </p>
+<p style="text-align:center;"> Debut Year: {{ all_artist_details.debut_year }}</p>
+
+
+
+<div class="card">
+  {% if all_artist_details.artist_image %}
+  <img src="{{ all_artist_details.artist_image.url }}" alt=" image of {{ all_artist_name }}">
+  {% else %}
+    <img src="https://picsum.photos/400/200?random={{ forloop.counter }}" alt="Artist">
+  {% endif %}
+    <div class="card-content">
+      <h3>{{all_artist_details.name}}</h3>
+      <p> {{all_artist_details.debut_year}} </p>
+    </div>
+</div>
+
+</div>
+   
+
+
+
+{% endblock content %}

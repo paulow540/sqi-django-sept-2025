@@ -13,13 +13,19 @@
 
 
 {% for all_artist_list in all_artist_lists %}
+<a href="{% url 'artists:artist-detail' all_artist_list.id %}">
 <div class="card">
- <img src="https://picsum.photos/400/200?random={{ forloop.counter }}" alt="Artist">
+  {% if all_artist_list.artist_image %}
+  <img src="{{ all_artist_list.artist_image.url }}" alt=" image of {{ all_artist_name }}">
+  {% else %}
+    <img src="https://picsum.photos/400/200?random={{ forloop.counter }}" alt="Artist">
+  {% endif %}
     <div class="card-content">
       <h3>{{all_artist_list.name}}</h3>
       <p> {{all_artist_list.debut_year}} </p>
     </div>
 </div>
+</a>
 {% endfor %}
 </div>
    

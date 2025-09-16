@@ -16,14 +16,16 @@
   
 {% for all_album_list in all_album_lists %}  
 
+<a href="{% url 'albums:album-detail' all_album_list.pk %}">
 <div class="card">
-    <img src="https://picsum.photos/400/200?random={{ forloop.counter }}" alt="Album">
+    <img src="{{ all_album_list.album_image.url }}" alt="Album">
     <div class="card-content">
       <h3>{{ all_album_list.title}}</h3>
       <p><strong>Artist:</strong> {{ all_album_list.artist.name }}</p>
       <p>Release Year: {{all_album_list.release_date}} </p>
     </div>
 </div>
+</a>
  {% endfor %}
 
 

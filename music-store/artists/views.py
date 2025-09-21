@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Artist
+from .forms import ArtistsForm
 
 # Create your views here.
 
@@ -10,12 +11,29 @@ def artist_list(request):
     }
     return render(request, "artists/artist_list.html", context)
 
+
+
 def artist_detail(request, artist_pk):
     all_artist_details = get_object_or_404(Artist, pk=artist_pk)
     context = {
         "all_artist_details": all_artist_details
     }
     return render(request, "artists/artist_detail.html",context )
+
+def create_artists(request):
+    form = ArtistsForm()
+    if request.method == "POST":
+        form = ArtistsForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("artists:artist-list")      
+    context = {
+        "form":form
+
+    }
+
+    return render(request, "artists/artist_create.html", context)
+
 
 
 

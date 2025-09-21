@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Recipe App{% endblock title %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <a href="{% url 'recipe:home' %}" class="logo">Foodie Recipes</a>
+        <ul class="nav-links">
+            <li><a href="{% url 'recipe:home' %}">Home</a></li>
+            <li><a href="{% url 'recipe:list-all-recipe' %}">All Recipes</a></li>
+            <li><a href="{% url 'recipe:create-recipe' %}">Create Recipes</a></li>
+
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        {% block body %}
+        {% endblock body %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 Foodie Recipes | Inspired by <a href="#" target="_blank">Food.com</a></p>
+    </footer>
+
+    <!-- JS -->
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

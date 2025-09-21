@@ -7,4 +7,5 @@ urlpatterns = [
 path("home-page", views.home_page, name="home-page"),
 path("album-list", views.album_list, name="album-list"),
 path("album-detail/<int:pk>/", views.album_detail, name="album-detail"),
+path("album-create/", views.create_album, name="album-create"),
 ]

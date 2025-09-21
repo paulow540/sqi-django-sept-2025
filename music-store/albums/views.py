@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Album
+from .forms import AlbumForm
 
 # Create your views here.
 
@@ -23,3 +24,17 @@ def album_detail(request, pk):
     }
 
     return render(request, "albums/album_detail.html", context)
+
+def create_album(request):
+    form = AlbumForm
+    if request.method == "POST":
+        form = AlbumForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect("albums:album-list")  
+
+    context = {
+        "form": form
+    }
+
+    return render(request, "albums/album_create.html", context)

@@ -1,0 +1,18 @@
+{% extends "base/base.html" %}
+
+
+
+{% block content %}
+<h1> Create Album</h1>
+
+<div>
+
+<form action="{% url 'albums:album-create' %}" method= "POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> create album </button>
+
+</form>
+</div>
+
+{% endblock content %}

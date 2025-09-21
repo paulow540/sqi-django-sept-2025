@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+
+{% block title %}{{ recipe_decription.name }} - Recipe Description{% endblock title %}
+
+{% block body %}
+<div class="recipe-page">
+    
+    <!-- Cover Image -->
+    {% if recipe_decription.cover_image %}
+        <div class="recipe-hero">
+            <img src="{{ recipe_decription.cover_image.url }}" alt="{{ recipe_decription.name }}">
+        </div>
+    {% endif %}
+
+    <!-- Title -->
+    <div class="recipe-header">
+        <h1>{{ recipe_decription.name }}</h1>
+        <p class="cooking-time">⏱ Cooking Time: {{ recipe_decription.cooking_time }} minutes</p>
+    </div>
+
+    <div class="recipe-content">
+        <!-- Ingredients -->
+        <div class="ingredients">
+            <h2>Ingredients</h2>
+            <ul>
+                {% for ingredient in ingredients %}
+                    <li>{{ ingredient|cut:" " }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h2>Instructions</h2>
+            <p>{{ recipe_decription.instructions }}</p>
+        </div>
+
+        {% comment %} <!-- Dish Image -->
+        {% if recipe_decription.image %}
+        <div class="recipe-image">
+            <img src="{{ recipe_decription.image.url }}" alt="{{ recipe_decription.name }}">
+        </div>
+        {% endif %} {% endcomment %}
+    </div>
+</div>
+{% endblock body %}

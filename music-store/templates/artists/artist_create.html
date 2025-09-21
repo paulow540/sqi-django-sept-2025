@@ -1,0 +1,20 @@
+{% extends "base/base.html" %}
+
+
+
+
+{% block content %}
+<div class="card">
+  <form action="{% url 'artists:create-artist' %}" method= "POST" enctype="multipart/form-data">
+  {% csrf_token %}    
+  {{ form.as_p }}
+ <button type="submit"> create artist </button>
+  </form>
+
+
+</div>
+   
+
+
+
+{% endblock content %}

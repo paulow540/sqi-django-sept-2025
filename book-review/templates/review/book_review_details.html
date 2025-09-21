@@ -1,0 +1,66 @@
+{% extends 'base/base.html' %}
+{% block title %}{{ book_review_details.title }} — Book Reviews{% endblock %}
+
+{% block content %}
+<article class="book-card" aria-labelledby="book-title">
+  <div>
+    <h1 id="book-title" class="title">{{ book_review_details.title }}</h1>
+    <div class="meta">Author: {{ book_review_details.author }} • Published: {{ book_review_details.publication_date }}</div>
+    {% if book_review_details.isbn %}
+    <p class="meta">ISBN: {{ book_review_details.isbn|default:"—" }}</p>
+    {% endif %}
+  </div>
+</article>
+
+<section aria-labelledby="reviews-heading">
+  <h2 id="reviews-heading">Reviews</h2>
+
+  <div id="reviews-list" class="reviews-list">
+    {% if reviews %}
+      {% for review in reviews %}
+        <div class="review">
+          <strong>{{ review.reviewer_name }}</strong>
+          <div class="stars" aria-label="Rating: {{ review.rating }} out of 5">
+            {% for i in "12345" %}
+              {% if forloop.counter <= review.rating %}★{% else %}☆{% endif %}
+            {% endfor %}
+          </div>
+          <p>{{ review.comment|linebreaksbr }}</p>
+          <div class="meta">{{ review.created_at }}</div>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No reviews yet for this book.</p>
+    {% endif %}
+  </div>
+
+  <div class="form-card" aria-labelledby="add-review-heading">
+    <h2 id="add-review-heading">Add a review</h2>
+
+    <form class="ajax-review-form" method="post" action="{% url 'review:book-review-details' book_review_details.pk %}" novalidate>
+      {% csrf_token %}
+      <div class="form-errors"></div>
+
+      <div class="form-row">
+        <label for="id_reviewer_name">Your name</label>
+        {{ form.reviewer_name }}
+        {% for err in form.reviewer_name.errors %}<div class="error">{{ err }}</div>{% endfor %}
+      </div>
+
+      <div class="form-row">
+        <label for="id_rating">Rating</label>
+        {{ form.rating }}
+        {% for err in form.rating.errors %}<div class="error">{{ err }}</div>{% endfor %}
+      </div>
+
+      <div class="form-row">
+        <label for="id_comment">Comment</label>
+        {{ form.comment }}
+        {% for err in form.comment.errors %}<div class="error">{{ err }}</div>{% endfor %}
+      </div>
+
+      <button type="submit" class="btn-primary">Submit review</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

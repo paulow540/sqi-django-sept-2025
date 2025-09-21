@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+{% block title %}Top Rated Books{% endblock %}
+
+{% block content %}
+  <h2>Top Rated Books</h2>
+
+  {% if books %}
+    <div class="stack">
+      {% for book in books %}
+        <div class="book">
+          {% if book.cover %}
+            <img src="{{ book.cover.url }}" alt="{{ book.title }}">
+          {% endif %}
+          <div>
+            <h3>{{ book.title }}</h3>
+            <p class="meta">by {{ book.author }} • Published {{ book.publication_date }}</p>
+            <p><strong>Average rating:</strong> {{ book.avg_rating|default:"No reviews yet" }}</p>
+            <a class="btn secondary" href="{% url 'review:book-review-details' book.pk %}">
+              View Reviews
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p>No books have reviews yet.</p>
+  {% endif %}
+{% endblock %}

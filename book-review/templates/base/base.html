@@ -1,0 +1,65 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <title>{% block title %}Book Reviews{% endblock %}</title>
+
+ 
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="{% url 'book:list-all-books' %}" class="brand">
+        <!-- replace with a real logo static later -->
+        <img src="{% static 'images/bookcover.jpg' %}" alt="logo" onerror="this.style.display='none'">
+        <h1>Book Reviews</h1>
+      </a>
+      <nav>
+        <a href="{% url 'book:list-all-books' %}" class="primary">Home</a>
+        <a href="{% url 'book:create-book' %}">Add Book</a>
+        <a href="{% url 'book:top-rated' %}">Top Rated Books</a>
+
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="card" id="main-content">
+          {% block content %}{% endblock %}
+        </div>
+      </section>
+
+      <aside>
+        <div class="card">
+    <h3>Top Rated Books</h3>
+    {% if sidebar_top_books %}
+      <ul class="stack" style="list-style:none;padding:0;margin:0">
+        {% for b in sidebar_top_books %}
+          <li>
+            <a href="{% url 'review:book-review-details' b.pk %}" style="text-decoration:none;color:inherit">
+              <strong>{{ b.title }}</strong><br>
+              <span class="small muted">⭐ {{ b.avg_rating|floatformat:1|default:"0.0" }}</span>
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="muted small">No reviews yet.</p>
+    {% endif %}
+  </div>
+      </aside>
+    </main>
+
+    <footer>
+      © {{ now|date:"Y" }} — Book Reviews example
+    </footer>
+  </div>
+
+ <script src="{% static 'js/scripts.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

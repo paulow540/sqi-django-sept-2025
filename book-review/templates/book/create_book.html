@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+{% block title %}Add book — Book Reviews{% endblock %}
+
+{% block content %}
+  <h2>Add a book</h2>
+  <form action="{% url 'book:create-book' %}" method="POST" enctype="multipart/form-data" class="stack">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <!-- Render form fields in a nice structure; you can keep using form.as_p if you prefer -->
+    <div>
+      {{ form.title.label_tag }}<br>
+      {{ form.title }}
+      {% for err in form.title.errors %}<div class="errors">{{ err }}</div>{% endfor %}
+    </div>
+
+    <div>
+      {{ form.author.label_tag }}<br>
+      {{ form.author }}
+      {% for err in form.author.errors %}<div class="errors">{{ err }}</div>{% endfor %}
+    </div>
+
+    <div>
+      {{ form.publication_date.label_tag }}<br>
+      {{ form.publication_date }}
+      {% for err in form.publication_date.errors %}<div class="errors">{{ err }}</div>{% endfor %}
+    </div>
+
+    <div>
+      {{ form.image.label_tag }}<br>
+      {{ form.image }}
+      {% for err in form.image.errors %}<div class="errors">{{ err }}</div>{% endfor %}
+    </div>
+
+    <div class="flex" style="justify-content:flex-end">
+      <button class="btn" type="submit">Add Book</button>
+    </div>
+  </form>
+{% endblock %}

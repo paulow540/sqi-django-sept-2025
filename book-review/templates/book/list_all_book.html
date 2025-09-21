@@ -1,0 +1,26 @@
+{% extends 'base/base.html' %}
+{% load static  %}
+{% block title %}All books — Book Reviews{% endblock %}
+
+{% block content %}
+  <h2>All books</h2>
+  <div class="stack">
+    {% for book in all_books %}
+      <a href="{% url 'review:book-review-details' book.pk %}" style="text-decoration:none;color:inherit">
+        <div class="book">
+          {% if book.image %}
+            <img src="{{ book.image.url }}" alt="{{ book.title }}">
+          {% else %}
+            <img src="{% static 'images/bookcover.jpg' %}" alt="">
+          {% endif %}
+          <div>
+            <h3 style="margin:.15rem 0">{{ book.title }}</h3>
+            <div class="meta">{{ book.author }} • {{ book.publication_date }}</div>
+          </div>
+        </div>
+      </a>
+    {% empty %}
+      <p>No books yet. <a href="{% url 'book:create-book' %}">Add the first book</a>.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

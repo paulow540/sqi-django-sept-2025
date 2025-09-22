@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+{% block title %}{{ movie.title }}{% endblock %}
+
+{% block content %}
+  <div style="display:flex; gap:1rem; align-items:flex-start;">
+    <div style="flex:0 0 300px;">
+      {% if movie.poster %}
+        <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" style="width:100%; height:auto;"/>
+      {% endif %}
+    </div>
+    <div>
+      <h2>{{ movie.title }}</h2>
+      <p><strong>Director:</strong> {{ movie.director }}</p>
+      <p><strong>Released:</strong> {{ movie.release_date }}</p>
+      <p><strong>Genre:</strong> {{ movie.get_genre_display }}</p>
+      <p>{{ movie.description|linebreaks }}</p>
+
+      <p style="margin-top:1rem;">
+        <a class="button" href="{% url 'movies:movie-edit' movie.pk %}">Edit</a>
+        <a class="button" href="{% url 'movies:movie-delete' movie.pk %}">Delete</a>
+      </p>
+    </div>
+  </div>
+  <p><a href="{% url 'movies:movie-list' %}">Back to list</a></p>
+{% endblock %}

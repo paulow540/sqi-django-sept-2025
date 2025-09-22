@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+{% block title %}{% if form.instance.pk %}Edit Movie{% else %}Create Movie{% endif %}{% endblock %}
+
+{% block content %}
+  <h2>{% if form.instance.pk %}Edit{% else %}Create{% endif %} Movie</h2>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <table>
+      {{ form.as_table }}
+    </table>
+    <button type="submit">Save</button>
+    <a href="{% url 'movies:movie-list' %}">Cancel</a>
+  </form>
+
+{% endblock %}

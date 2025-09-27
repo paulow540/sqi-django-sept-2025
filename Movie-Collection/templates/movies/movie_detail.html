@@ -2,12 +2,15 @@
 {% block title %}{{ movie.title }}{% endblock %}
 
 {% block content %}
-  <div style="display:flex; gap:1rem; align-items:flex-start;">
-    <div style="flex:0 0 300px;">
-      {% if movie.poster %}
-        <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster" style="width:100%; height:auto;"/>
-      {% endif %}
-    </div>
+  <p style="margin-top:1rem;">
+  {% if user.is_authenticated and movie.added_by == user %}
+    <a class="button" href="{% url 'movies:movie-edit' movie.pk %}">Edit</a>
+    <a class="button" href="{% url 'movies:movie-delete' movie.pk %}">Delete</a>
+  {% elif not movie.added_by %}
+    <p> no permision to do anything</p>
+  {% endif %}
+</p>
+
     <div>
       <h2>{{ movie.title }}</h2>
       <p><strong>Director:</strong> {{ movie.director }}</p>

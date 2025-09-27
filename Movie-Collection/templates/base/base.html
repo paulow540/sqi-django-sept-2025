@@ -7,12 +7,35 @@
   <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 </head>
 <body>
-  <header>
+  <header style="display:flex; justify-content:space-between; align-items:center;">
     <h1><a href="{% url 'movies:movie-list' %}">Movie Collection</a></h1>
+   <nav>
+  {% if user.is_authenticated %}
+    Hello, {{ user.username }} |
+    <form action="{% url 'movies:logout' %}" method="post" style="display:inline;">
+      {% csrf_token %}
+      <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">
+        Logout
+      </button>
+    </form>
+  {% else %}
+    <a href="{% url 'movies:login' %}">Login</a>
+  {% endif %}
+</nav>
+
   </header>
+
   <main>
+    {% if messages %}
+      <ul class="messages" style="list-style:none; padding:0;">
+        {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
     {% block content %}{% endblock %}
   </main>
+
   <footer>
     <small>Movie Collection App</small>
   </footer>

@@ -1,8 +1,8 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 
-# Create your models here.
-
+User = get_user_model()
 
 class GenreChoices(models.TextChoices):
     ACTION = 'AC', 'Action'
@@ -23,6 +23,15 @@ class Movie(models.Model):
     genre = models.CharField(max_length=2, choices=GenreChoices.choices)
     description = models.TextField(blank=True)
     poster = models.ImageField(upload_to='posters/', blank=True, null=True)
+
+    
+    added_by = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='movies',
+        null=True,
+        blank=True,
+    )
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
